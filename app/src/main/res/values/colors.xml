@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ecedf3</color>
+    <color name="colorPrimaryDark">#1d1f20</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--抽屉颜色-->
+    <color name="drawer_back">#2a2a29</color>
+    <color name="drawer_font">#838282</color>
+    <!--文字背景颜色-->
+    <color name="greenBack">#ceefce</color>
+    <color name="greenFont">#425542</color>
+    <color name="yellowBack">#ddc69e</color>
+    <color name="yellowFont">#5e422f</color>
+    <color name="pinkBack">#fff6ef</color>
+    <color name="pinkFont">#db7d6d</color>
+    <color name="whiteBack">#ffffff</color>
+    <color name="whiteFont">#333333</color>
+    <color name="nightBack">#0d0d0b</color>
+    <color name="nightFont">#5b5952</color>
+
+    <color name="toolbar_back">#1d1f20</color>
+    <color name="toolbar_font">#d8dbde</color>
+</resources>

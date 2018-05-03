@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/drawer_back">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="55sp"
+        android:layout_weight="1">
+        <ImageButton
+            android:id="@+id/bt_adjust_background"
+            android:layout_width="30sp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/drawer_back"
+            android:src="@drawable/ic_background" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="55sp"
+        android:layout_weight="1">
+        <CheckBox
+            android:id="@+id/bt_like"
+            android:layout_width="33sp"
+            android:layout_height="33sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:button="@null"
+            android:background="@drawable/radio_like"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="55sp"
+        android:layout_weight="1">
+        <ImageButton
+            android:id="@+id/bt_more"
+            android:layout_width="33sp"
+            android:layout_height="33sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/drawer_back"
+            android:src="@drawable/ic_more"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

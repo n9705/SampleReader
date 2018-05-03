@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">简阅</string>
+    <string name="MinText">一款专注短篇阅读的APP</string>
+
+    <string name="TextFinish">全文完</string>
+
+    <string name="Suggest_text">请输入您的建议....</string>
+    <string name="sure">开始使用</string>
+    <string name="sure1">提交</string>
+
+    <string name="ZiHao">字号</string>
+    <string name="BeiJin">背景</string>
+    <string name="YeJian">夜间</string>
+    <string name="share">分享</string>
+    <string name="favorite">收藏夹</string>
+    <string name="suggest">意见反馈</string>
+
+    <string name="viewGager_1">欢迎使用简阅</string>
+    <string name="viewGager_2">本APP的文章摘自“每日一文”</string>
+    <string name="viewGager_3">每次打开app后第一篇文章会获取“每日一文”上最新的文章,  之后随机</string>
+    <string name="viewGager_4">点击标题栏可以刷新</string>
+    <string name="viewGager_5">点击标题栏以外的地方会弹出底栏</string>
+    <string name="viewGager_6">欢迎大家通过意见反馈（在底栏更多按钮）来向我说出自己的意见</string>
+
+</resources>

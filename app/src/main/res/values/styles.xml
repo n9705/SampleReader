@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--去除标题栏-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--去除标题栏和状态栏-->
+    <style name="AppTheme.NoBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--去除状态栏-->
+    <style name="AppTheme.NoStatusBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!--&lt;!&ndash;多选框样式&ndash;&gt;-->
+    <!--<style name="check_box">-->
+        <!--<item name="android:button">-->
+            <!--@drawable/checkbox-->
+        <!--</item>-->
+    <!--</style>-->
+
+</resources>

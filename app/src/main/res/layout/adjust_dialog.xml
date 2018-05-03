@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/drawer_back">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="12sp">
+    </TextView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text_ZiHao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="17sp"
+            android:text="@string/ZiHao"
+            android:textSize="20sp"
+            android:textColor="@color/drawer_font"/>
+
+        <lib.kingja.switchbutton.SwitchMultiButton
+            android:id="@+id/switchmultibutton"
+            android:layout_width="wrap_content"
+            android:layout_height="35sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:padding="20sp"
+            android:textColor="@color/drawer_font"
+            app:selectedColor="@color/drawer_font"
+            app:selectedTab="1"
+            app:strokeRadius="7sp"
+            app:strokeWidth="1dp"
+            app:switchTabs="@array/switch_tabs"
+            app:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text_BeiJin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="17sp"
+            android:text="@string/BeiJin"
+            android:textSize="20sp"
+            android:textColor="@color/drawer_font"/>
+        <RadioGroup
+            android:id="@+id/background_color"
+            android:layout_width="wrap_content"
+            android:layout_height="48sp"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_marginStart="120sp">
+            <RadioButton
+                android:id="@+id/bt_white"
+                android:layout_width="44sp"
+                android:layout_height="44sp"
+                android:button="@null"
+                android:background="@drawable/radio_white"/>
+            <RadioButton
+                android:id="@+id/bt_green"
+                android:layout_width="44sp"
+                android:layout_height="44sp"
+                android:button="@null"
+                android:layout_marginLeft="20sp"
+                android:background="@drawable/radio_green"/>
+            <RadioButton
+                android:id="@+id/bt_yellow"
+                android:layout_width="44sp"
+                android:layout_height="44sp"
+                android:button="@null"
+                android:layout_marginLeft="20sp"
+                android:background="@drawable/radio_yellow"/>
+            <RadioButton
+                android:id="@+id/bt_pink"
+                android:layout_width="44sp"
+                android:layout_height="44sp"
+                android:layout_marginLeft="20sp"
+                android:button="@null"
+                android:background="@drawable/radio_pink"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp">
+        <TextView
+            android:id="@+id/text_Night"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="17sp"
+            android:text="@string/YeJian"
+            android:textSize="20sp"
+            android:textColor="@color/drawer_font"/>
+
+        <com.sevenheaven.iosswitch.ShSwitchView
+            android:id="@+id/switch_Night"
+            android:layout_width="61sp"
+            android:layout_height="40sp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            app:tintColor="@color/drawer_font"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="13sp"
+        android:background="@color/drawer_back">
+    </RelativeLayout>
+
+</LinearLayout>
