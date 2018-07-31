@@ -24,6 +24,8 @@ import android.widget.Toast;
 
 import com.example.n9705.samplereader.DataBase.MyOpenHelper;
 
+import es.dmoral.toasty.Toasty;
+
 
 /**
  * Created by 86758 on 2017/12/12 0012.
@@ -111,12 +113,12 @@ public class Bottom_Dialog extends DialogFragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    Toast.makeText(Bottom_Dialog.this.getActivity(), "已收藏", Toast.LENGTH_SHORT).show();
+                    Toasty.success(Bottom_Dialog.this.getActivity(), "已收藏", Toast.LENGTH_SHORT,true).show();
                     likelistener.check(true);
 
                 }
                 else{
-                    Toast.makeText(Bottom_Dialog.this.getActivity(), "取消收藏", Toast.LENGTH_SHORT).show();
+                    Toasty.error(Bottom_Dialog.this.getActivity(), "取消收藏", Toast.LENGTH_SHORT,true).show();
                     likelistener.check(false);
                 }
             }

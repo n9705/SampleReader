@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.devilist.advancedtextview;
+package com.example.n9705.samplereader.AdvancedTextview;
 
 /**
  * Created by zengp on 2017/12/2.

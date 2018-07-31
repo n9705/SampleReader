@@ -46,8 +46,7 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,13 +74,15 @@
                 android:textSize="17sp"
                 android:textStyle="italic"/>
 
-            <com.example.n9705.samplereader.JustifyTextView
+            <com.example.n9705.samplereader.AdvancedTextview.SelectableTextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginEnd="5dp"
-                android:lineSpacingMultiplier = "1.5" />
+                android:layout_marginEnd="11dp"
+                android:lineSpacingMultiplier = "1.5"
+                app:forbiddenActionMenu="false"
+                app:textJustify="false"/>
 
             <TextView
                 android:id="@+id/textFinish"

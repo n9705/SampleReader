@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.devilist.advancedtextview;
+package com.example.n9705.samplereader.AdvancedTextview;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;

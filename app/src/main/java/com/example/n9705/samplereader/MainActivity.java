@@ -9,16 +9,32 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.app.hubert.guide.NewbieGuide;
+import com.app.hubert.guide.core.Controller;
+import com.app.hubert.guide.listener.OnGuideChangedListener;
+import com.app.hubert.guide.listener.OnLayoutInflatedListener;
+import com.app.hubert.guide.listener.OnPageChangedListener;
+import com.app.hubert.guide.model.GuidePage;
+import com.app.hubert.guide.model.HighLight;
+import com.app.hubert.guide.model.HighlightOptions;
+import com.app.hubert.guide.model.RelativeGuide;
+import com.example.n9705.samplereader.AdvancedTextview.ActionMenu;
+import com.example.n9705.samplereader.AdvancedTextview.CustomActionMenuCallBack;
+import com.example.n9705.samplereader.AdvancedTextview.SelectableTextView;
 import com.example.n9705.samplereader.DataBase.Articles_Dao;
 import com.example.n9705.samplereader.DataBase.MyOpenHelper;
 
@@ -29,13 +45,16 @@ import org.jsoup.select.Elements;
 
 import java.util.Vector;
 
+import es.dmoral.toasty.Toasty;
+
 import static com.example.n9705.samplereader.Bottom_Dialog.DIALOG_TAG_2;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,CustomActionMenuCallBack {
 
+    private static final String TAG ="";
     public Toolbar toolbar;
     private TextView textTitle, textAuthor, barTitle, textFinish;
-    private JustifyTextView textView;
+    private SelectableTextView textView;
     private ScrollView scrollView;
     private LinearLayout linearLayout;
     private ProgressBar progressBar;
@@ -76,6 +95,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }).start();
         init();
+        SharePreference sp=new SharePreference(MainActivity.this);
+        boolean isLogin = sp.getState();
+        if(!isLogin){//第一次启动
+            //显示引导页面
+            guidePager();
+            sp.setState();
+        }
         // 创建MyOpenHelper实例
         mOpenHelper = new MyOpenHelper(this);
         // 得到数据库
@@ -102,6 +128,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler=new Handler();
         //OnTouch监听器,可以自动隐藏和显示标题，酷的一批
         scrollView.setOnTouchListener(new PicOnTouchListener());
+    }
+
+    private void guidePager(){
+        Animation enterAnimation = new AlphaAnimation(0f, 1f);
+        enterAnimation.setDuration(400);
+        enterAnimation.setFillAfter(true);
+
+        Animation exitAnimation = new AlphaAnimation(1f, 0f);
+        exitAnimation.setDuration(400);
+        exitAnimation.setFillAfter(true);
+
+        //新增多页模式，即一个引导层显示多页引导内容
+        NewbieGuide.with(this)
+                .setLabel("page")//设置引导层标示区分不同引导层，必传！否则报错
+//                .anchor(anchor)
+                .setOnGuideChangedListener(new OnGuideChangedListener() {
+                    @Override
+                    public void onShowed(Controller controller) {
+                        Log.e(TAG, "NewbieGuide onShowed: ");
+                        //引导层显示
+                    }
+
+                    @Override
+                    public void onRemoved(Controller controller) {
+                        Log.e(TAG, "NewbieGuide  onRemoved: ");
+                        //引导层消失（多页切换不会触发）
+                    }
+                })
+                .alwaysShow(false)//是否每次都显示引导层，默认false，只显示一次
+                .addGuidePage(GuidePage.newInstance() //添加引导页
+                        .addHighLight(toolbar,HighLight.Shape.CIRCLE,-550)
+                        .setLayoutRes(R.layout.guide_view_1)
+                        .setOnLayoutInflatedListener(new OnLayoutInflatedListener() {
+                            @Override
+                            public void onLayoutInflated(View view, final Controller controller) {
+                                view.findViewById(R.id.guideNext1).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        controller.showPage(1);
+                                    }
+                                });
+                            }
+                        })
+                        .setEnterAnimation(enterAnimation)//进入动画
+                        .setExitAnimation(exitAnimation)//退出动画
+                )
+                .addGuidePage(GuidePage.newInstance() //添加引导页
+                        .addHighLight(textView,HighLight.Shape.CIRCLE,-1500)
+                        .setLayoutRes(R.layout.guide_view_2)
+                        .setEnterAnimation(enterAnimation)//进入动画
+                        .setExitAnimation(exitAnimation)//退出动画
+                )
+                .addGuidePage(GuidePage.newInstance() //添加引导页
+                        .addHighLight(textView,HighLight.Shape.CIRCLE,-1500)
+                        .setLayoutRes(R.layout.guide_view_3)
+                        .setEnterAnimation(enterAnimation)//进入动画
+                        .setExitAnimation(exitAnimation)//退出动画
+                )
+                .show();//显示引导层(至少需要一页引导页才能显示)
     }
 
     //获取文章
@@ -173,6 +258,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             textTitle.setText(Title);//显示正文标题
             textAuthor.setText(Author);//显示作者
             textView.setText(Text);//显示文章内容
+            textView.clearFocus();
+            textView.setTextJustify(true);// 是否启用两端对齐 默认启用
+            textView.setForbiddenActionMenu(false);// 是否禁用自定义ActionMenu 默认启用
+            textView.postInvalidate();
             textFinish.setText("全文完");
             SharePreference sp = new SharePreference(MainActivity.this);
             sp.setLikeFlase();
@@ -320,8 +409,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 textView.setText(Text);//显示文章内容
                 int i=sp.getSize();//获取字号
                 setsize(i);//设置字体大小
+                textView.clearFocus();
+                textView.setTextJustify(true);// 是否启用两端对齐 默认启用
+                textView.setForbiddenActionMenu(false);// 是否禁用自定义ActionMenu 默认启用
+                textView.postInvalidate();
             }
         }
+    }
+
+    @Override
+    public boolean onCreateCustomActionMenu(ActionMenu menu) {
+        menu.setActionMenuBgColor(0xff666666);                    // ActionMenu背景色
+        menu.setMenuItemTextColor(0xffffffff);                   // ActionMenu文字颜色
+        return false;                                            // 返回false，保留默认菜单(全选/复制)；返回true，移除默认菜单
+    }
+
+    @Override
+    public void onCustomActionItemClicked(String itemTitle, String selectedContent) {
+        Toasty.success(this, "ActionMenu: " + itemTitle, Toast.LENGTH_SHORT,true).show();
     }
 
     //初始化界面样式

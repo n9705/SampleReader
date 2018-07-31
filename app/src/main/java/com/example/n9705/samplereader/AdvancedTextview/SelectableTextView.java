@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.devilist.advancedtextview;
+package com.example.n9705.samplereader.AdvancedTextview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -40,9 +40,12 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.example.n9705.samplereader.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import es.dmoral.toasty.Toasty;
 
 import static android.content.Context.VIBRATOR_SERVICE;
 
@@ -52,7 +55,7 @@ import static android.content.Context.VIBRATOR_SERVICE;
  * <p> 2：文本两端对齐功能；适用于中文文本，英文文本 以及中英混合文本
  * Created by zengpu on 2016/11/20.
  */
-public class SelectableTextView extends EditText {
+public class SelectableTextView extends android.support.v7.widget.AppCompatEditText {
 
     private final int TRIGGER_LONGPRESS_TIME_THRESHOLD = 300;    // 触发长按事件的时间阈值
     private final int TRIGGER_LONGPRESS_DISTANCE_THRESHOLD = 10; // 触发长按事件的位移阈值
@@ -145,8 +148,7 @@ public class SelectableTextView extends EditText {
 
     public void setTextHighlightColor(int color) {
         this.mTextHighlightColor = color;
-        String color_hex = String.format("%08X", color);
-        color_hex = "#40" + color_hex.substring(2);
+        String color_hex = "#FF4081";
         setHighlightColor(Color.parseColor(color_hex));
     }
 
@@ -364,7 +366,7 @@ public class SelectableTextView extends EditText {
             } else if (menuItemTitle.equals(ActionMenu.DEFAULT_MENU_ITEM_TITLE_COPY)) {
                 // 复制事件
                 Utils.copyText(mContext, selected_str);
-                Toast.makeText(mContext, "复制成功！", Toast.LENGTH_SHORT).show();
+                Toasty.success(mContext, "复制成功！", Toast.LENGTH_SHORT,true).show();
                 hideActionMenu();
 
             } else {

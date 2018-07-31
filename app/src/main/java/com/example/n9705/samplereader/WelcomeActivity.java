@@ -5,8 +5,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.n9705.samplereader.ViewPager.ViewPagerActivity;
-
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
@@ -20,13 +18,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 boolean isLogin = sp.getState();
                 if(!isLogin){//第一次启动
                     init();//初始化
-                    Intent intent=new Intent(WelcomeActivity.this,ViewPagerActivity.class);
-                    startActivity(intent);
                 }
-                else {
-                    Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
+                startActivity(intent);
                 finish();
             }
         }, 1000); //1s for release

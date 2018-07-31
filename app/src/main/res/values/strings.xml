@@ -21,5 +21,9 @@
     <string name="viewGager_4">点击标题栏可以刷新</string>
     <string name="viewGager_5">点击标题栏以外的地方会弹出底栏</string>
     <string name="viewGager_6">欢迎大家通过意见反馈（在底栏更多按钮）来向我说出自己的意见</string>
+    <string name="guide_text3">尽情食用吧</string>
+    <string name="guide_text2">点击正文任意位置可以唤出底部工具栏，实现更多操作</string>
+    <string name="guide_text1">点击顶部可以刷新文章</string>
+    <string name="guide_next">下一步</string>
 
 </resources>
