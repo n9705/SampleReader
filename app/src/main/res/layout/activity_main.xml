@@ -37,10 +37,11 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="358dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="center"
             android:indeterminate="false" />
+
     </FrameLayout>
 
     <ScrollView

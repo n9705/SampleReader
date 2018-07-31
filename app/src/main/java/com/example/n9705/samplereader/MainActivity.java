@@ -9,10 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -27,11 +25,8 @@ import com.app.hubert.guide.NewbieGuide;
 import com.app.hubert.guide.core.Controller;
 import com.app.hubert.guide.listener.OnGuideChangedListener;
 import com.app.hubert.guide.listener.OnLayoutInflatedListener;
-import com.app.hubert.guide.listener.OnPageChangedListener;
 import com.app.hubert.guide.model.GuidePage;
 import com.app.hubert.guide.model.HighLight;
-import com.app.hubert.guide.model.HighlightOptions;
-import com.app.hubert.guide.model.RelativeGuide;
 import com.example.n9705.samplereader.AdvancedTextview.ActionMenu;
 import com.example.n9705.samplereader.AdvancedTextview.CustomActionMenuCallBack;
 import com.example.n9705.samplereader.AdvancedTextview.SelectableTextView;
@@ -42,8 +37,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.util.Vector;
 
 import es.dmoral.toasty.Toasty;
 
@@ -63,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public int color=0;
     MyOpenHelper mOpenHelper;
     SQLiteDatabase db;
-    Vector<Thread> vectors=new Vector<Thread>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -275,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             progressBar.setVisibility(View.INVISIBLE);
             barTitle.setText(Title);
             Toast.makeText(MainActivity.this, "无网络连接", Toast.LENGTH_SHORT).show();
-            if(Title==""){
+            if(Title.equals("")){
                 textTitle.setText("无网络连接");
             }
         }
