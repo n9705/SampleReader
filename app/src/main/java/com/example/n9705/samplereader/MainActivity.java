@@ -532,15 +532,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void setsize(int i){
         if(i == 0) {
             System.out.println("设置字体大小为“小");
-            textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 53);
+            textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 58);
         }
         else if(i == 1) {
             System.out.println("设置字体大小为“中");
-            textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 59);
+            textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 66);
         }
         else if(i == 2) {
             System.out.println("设置字体大小为“大");
-            textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 67);
+            textView.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, 73);
         }
     }
 
