@@ -25,5 +25,6 @@
     <string name="guide_text2">点击正文任意位置可以唤出底部工具栏，实现更多操作</string>
     <string name="guide_text1">点击顶部可以刷新文章</string>
     <string name="guide_next">下一步</string>
+    <string name="guideText3">哦</string>
 
 </resources>

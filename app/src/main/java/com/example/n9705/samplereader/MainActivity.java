@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!isLogin){//第一次启动
             //显示引导页面
             guidePager();
-            sp.setState();
         }
         // 创建MyOpenHelper实例
         mOpenHelper = new MyOpenHelper(this);
@@ -152,17 +151,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .addGuidePage(GuidePage.newInstance() //添加引导页
                         .addHighLight(toolbar,HighLight.Shape.CIRCLE,-550)
                         .setLayoutRes(R.layout.guide_view_1)
-                        .setOnLayoutInflatedListener(new OnLayoutInflatedListener() {
-                            @Override
-                            public void onLayoutInflated(View view, final Controller controller) {
-                                view.findViewById(R.id.guideNext1).setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        controller.showPage(1);
-                                    }
-                                });
-                            }
-                        })
                         .setEnterAnimation(enterAnimation)//进入动画
                         .setExitAnimation(exitAnimation)//退出动画
                 )
@@ -175,6 +163,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .addGuidePage(GuidePage.newInstance() //添加引导页
                         .addHighLight(textView,HighLight.Shape.CIRCLE,-1500)
                         .setLayoutRes(R.layout.guide_view_3)
+                        .setOnLayoutInflatedListener(new OnLayoutInflatedListener() {
+                            @Override
+                            public void onLayoutInflated(View view, final Controller controller) {
+                                view.findViewById(R.id.guide_commit).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        SharePreference sp=new SharePreference(MainActivity.this);
+                                        sp.setState();
+                                        controller.remove();
+                                    }
+                                });
+                            }
+                        })
+                        .setEverywhereCancelable(false)//是否点击任意地方跳转下一页或者消失引导层，默认true
                         .setEnterAnimation(enterAnimation)//进入动画
                         .setExitAnimation(exitAnimation)//退出动画
                 )

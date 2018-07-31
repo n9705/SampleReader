@@ -3,10 +3,10 @@ package com.example.n9705.samplereader;
 
 import android.app.DialogFragment;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
@@ -18,9 +18,6 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.example.n9705.samplereader.DataBase.MyOpenHelper;
 
 /**
  * Created by 86758 on 2017/12/13 0013.
